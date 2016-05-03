@@ -1,0 +1,6 @@
+rootProject.name = 'hystrix-demo'
+
+include ':dashboard'
+include ':client'
+
+

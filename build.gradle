@@ -1,0 +1,53 @@
+buildscript {
+    ext {
+        repositoryUrl = 'http://123.56.229.83:8081/nexus/content/groups/public/'
+    }
+    repositories {
+        maven { url repositoryUrl }
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.8.RELEASE'
+        classpath 'io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE'
+    }
+}
+
+allprojects {
+    group 'com.huangyuqiang'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'spring-boot'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.cloud:spring-cloud-starter-parent:Angel.SR6'
+        }
+    }
+}
+
+project("client") {
+    description = "client"
+
+    dependencies {
+        compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+        compile 'org.springframework.boot:spring-boot-starter-actuator'
+        compile 'org.springframework.boot:spring-boot-starter-web'
+    }
+}
+
+project("dashboard") {
+    description = "dashboard"
+
+    dependencies {
+        compile 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
+    }
+}
+
