@@ -34,20 +34,28 @@ subprojects {
 }
 
 project("client") {
-    description = "client"
-
     dependencies {
         compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+        compile 'org.springframework.cloud:spring-cloud-starter-eureka'
         compile 'org.springframework.boot:spring-boot-starter-actuator'
         compile 'org.springframework.boot:spring-boot-starter-web'
     }
 }
 
 project("dashboard") {
-    description = "dashboard"
-
     dependencies {
         compile 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
     }
 }
 
+project("aggregator") {
+    dependencies {
+        compile 'org.springframework.cloud:spring-cloud-starter-turbine'
+    }
+}
+
+project("registry") {
+    dependencies {
+        compile 'org.springframework.cloud:spring-cloud-starter-eureka-server'
+    }
+}

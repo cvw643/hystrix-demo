@@ -2,5 +2,5 @@ rootProject.name = 'hystrix-demo'
 
 include ':dashboard'
 include ':client'
-
-
+include ':aggregator'
+include ':registry'
