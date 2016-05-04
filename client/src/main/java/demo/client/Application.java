@@ -15,10 +15,9 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-
-    @Scheduled(fixedDelay = 100)
-    public void run() {
-        Command command = new Command(100);
-        System.out.println(command.execute());
+    @Scheduled(fixedDelay = 10)
+    public void execute() {
+        UnstableCommand command = new UnstableCommand("MyGroup", "MyThreadPool", 1000, 0.2, 0.2);
+        command.queue();
     }
 }
